@@ -10,14 +10,15 @@ radius = 117.15375
 [node name="Eyeplant" type="Node2D" unique_id=1321128289]
 script = ExtResource("1_ghv7r")
 
+[node name="Plant" type="Sprite2D" parent="." unique_id=598578256]
+texture = ExtResource("2_ghv7r")
+offset = Vector2(0, -11.695)
+
 [node name="EyeCenter" type="Node2D" parent="." unique_id=203129819]
-position = Vector2(1, -9)
+position = Vector2(1, -21)
 
 [node name="Eye" type="Sprite2D" parent="EyeCenter" unique_id=368844381]
 texture = ExtResource("1_nvp2a")
-
-[node name="Plant" type="Sprite2D" parent="." unique_id=598578256]
-texture = ExtResource("2_ghv7r")
 
 [node name="Sensor" type="Area2D" parent="." unique_id=1344332926]
 collision_layer = 0
