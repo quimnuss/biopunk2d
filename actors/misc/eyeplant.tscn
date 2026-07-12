@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://b4cmjxffpuhyv"]
+
+[ext_resource type="Script" uid="uid://p5hf2orsqlys" path="res://actors/misc/eyeplant.gd" id="1_ghv7r"]
+[ext_resource type="Texture2D" uid="uid://df6fod2iv4qd6" path="res://assets/pixel2.png" id="1_nvp2a"]
+[ext_resource type="Texture2D" uid="uid://c6q5dpj60sb0d" path="res://assets/eyeplant.png" id="2_ghv7r"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aa4ma"]
+radius = 117.15375
+
+[node name="Eyeplant" type="Node2D" unique_id=1321128289]
+script = ExtResource("1_ghv7r")
+
+[node name="EyeCenter" type="Node2D" parent="." unique_id=203129819]
+position = Vector2(1, -9)
+
+[node name="Eye" type="Sprite2D" parent="EyeCenter" unique_id=368844381]
+texture = ExtResource("1_nvp2a")
+
+[node name="Plant" type="Sprite2D" parent="." unique_id=598578256]
+texture = ExtResource("2_ghv7r")
+
+[node name="Sensor" type="Area2D" parent="." unique_id=1344332926]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sensor" unique_id=369139463]
+visible = false
+shape = SubResource("CircleShape2D_aa4ma")
+debug_color = Color(0.58431375, 0.91764706, 1, 0)
+
+[connection signal="body_entered" from="Sensor" to="." method="_on_sensor_body_entered"]
+[connection signal="body_exited" from="Sensor" to="." method="_on_sensor_body_exited"]

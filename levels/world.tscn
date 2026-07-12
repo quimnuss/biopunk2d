@@ -2,6 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://dg0jrp30x0k6u" path="res://actors/player/explorer.tscn" id="1_2mgkc"]
 [ext_resource type="TileSet" uid="uid://svasuik5davx" path="res://assets/world_tileset.tres" id="1_tsgde"]
+[ext_resource type="PackedScene" uid="uid://cbp1gfb8gxxsn" path="res://actors/misc/spawn_seed.tscn" id="3_pmfem"]
+[ext_resource type="PackedScene" uid="uid://b4cmjxffpuhyv" path="res://actors/misc/eyeplant.tscn" id="4_w32yo"]
 
 [node name="World" type="Node2D" unique_id=2121694070]
 
@@ -22,3 +24,26 @@ zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
+
+[node name="SpawnSeed" parent="." unique_id=864821937 instance=ExtResource("3_pmfem")]
+position = Vector2(389, 461)
+
+[node name="EyeplantField" type="Node2D" parent="." unique_id=978566002]
+
+[node name="Eyeplant" parent="EyeplantField" unique_id=1321128289 instance=ExtResource("4_w32yo")]
+position = Vector2(502, 235)
+
+[node name="Eyeplant2" parent="EyeplantField" unique_id=1258288254 instance=ExtResource("4_w32yo")]
+position = Vector2(486, 301)
+
+[node name="Eyeplant3" parent="EyeplantField" unique_id=1565512838 instance=ExtResource("4_w32yo")]
+position = Vector2(503, 294)
+
+[node name="Eyeplant4" parent="EyeplantField" unique_id=1751114251 instance=ExtResource("4_w32yo")]
+position = Vector2(516, 270)
+
+[node name="Eyeplant5" parent="EyeplantField" unique_id=1642192496 instance=ExtResource("4_w32yo")]
+position = Vector2(478, 248)
+
+[node name="Eyeplant6" parent="EyeplantField" unique_id=1549213595 instance=ExtResource("4_w32yo")]
+position = Vector2(493, 270)
