@@ -143,6 +143,9 @@ _data = {
 &"walk_up": SubResource("Animation_xd2sl")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_xd2sl"]
+radius = 22.022715
+
 [node name="Explorer" type="CharacterBody2D" unique_id=1401498306]
 collision_layer = 2
 script = ExtResource("1_hjlto")
@@ -163,3 +166,17 @@ frame = 25
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1563814036]
 libraries/ = SubResource("AnimationLibrary_qmotx")
 autoplay = &"idle_horizontal"
+
+[node name="GrabArea2D" type="Area2D" parent="." unique_id=1422211915]
+collision_layer = 2
+collision_mask = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrabArea2D" unique_id=1764781604]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_xd2sl")
+
+[node name="Hand" type="Node2D" parent="." unique_id=1584428716]
+position = Vector2(10, -8)
+
+[connection signal="area_entered" from="GrabArea2D" to="." method="_on_grab_area_2d_area_entered"]
+[connection signal="area_exited" from="GrabArea2D" to="." method="_on_grab_area_2d_area_exited"]
