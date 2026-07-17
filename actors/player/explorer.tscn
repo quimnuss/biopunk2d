@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://b3t7hocj8h1je" path="res://actors/player/explorer.gd" id="1_hjlto"]
 [ext_resource type="Texture2D" uid="uid://e0cqobxwd1jy" path="res://actors/player/assets/player.png" id="2_xd2sl"]
+[ext_resource type="Script" uid="uid://x2gdyb3lkcy0" path="res://actors/player/projectile.gd" id="3_i26ny"]
+[ext_resource type="Texture2D" uid="uid://bhcn05ejrghsw" path="res://assets/stripe.png" id="4_1swmn"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xd2sl"]
 radius = 7.0
@@ -146,6 +148,12 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_xd2sl"]
 radius = 22.022715
 
+[sub_resource type="Curve2D" id="Curve2D_qmotx"]
+_data = {
+"points": PackedVector2Array(0, 0, 75, -150, 0, 0, 0, 0, 0, 0, 150, 0)
+}
+point_count = 2
+
 [node name="Explorer" type="CharacterBody2D" unique_id=1401498306]
 collision_layer = 2
 script = ExtResource("1_hjlto")
@@ -177,6 +185,16 @@ shape = SubResource("CircleShape2D_xd2sl")
 
 [node name="Hand" type="Node2D" parent="." unique_id=1584428716]
 position = Vector2(10, -8)
+
+[node name="Projectile" type="Path2D" parent="." unique_id=1156796049]
+curve = SubResource("Curve2D_qmotx")
+script = ExtResource("3_i26ny")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Projectile" unique_id=757761090]
+rotation = -1.1071488
+
+[node name="Sprite2D" type="Sprite2D" parent="Projectile/PathFollow2D" unique_id=1671047091]
+texture = ExtResource("4_1swmn")
 
 [connection signal="area_entered" from="GrabArea2D" to="." method="_on_grab_area_2d_area_entered"]
 [connection signal="area_exited" from="GrabArea2D" to="." method="_on_grab_area_2d_area_exited"]

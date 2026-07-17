@@ -2,6 +2,8 @@ class_name Player
 extends CharacterBody2D
 @onready var sprite_2d: Sprite2D = $Anchor/Sprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var hand : Node2D = $Hand
+@export var last_obj : Node2D
 
 var last_walk_velocity : Vector2 = Vector2.ZERO
 
@@ -10,6 +12,8 @@ const SPEED = 100.0
 var grabbable_objects : Array[Grabbable]
 
 var tool : Node2D
+
+var is_shooting : bool = false
 
 func _input(event: InputEvent) -> void:
     if event.is_action_pressed("interact") and last_obj:
@@ -26,6 +30,10 @@ func _physics_process(delta: float) -> void:
         sprite_2d.flip_h = true
     elif direction.x > 0:
         sprite_2d.flip_h = false
+
+    if Input.is_action_just_pressed("shoot") and last_obj:
+        if tool:
+            shoot()
 
     if direction:
         velocity = direction * SPEED
@@ -56,7 +64,13 @@ func _physics_process(delta: float) -> void:
 func closest_object(a : Node2D, b : Node2D):
     return self.global_position.distance_to(a.global_position) < self.global_position.distance_to(b.global_position)
 
-@export var last_obj : Node2D
+func shoot():
+    if is_shooting:
+        return
+    is_shooting = true
+    
+    var start_position := self.global_position
+    var direction = -1 if sprite_2d.flip_h else 1
 
 func grabbable_changed():
     if not grabbable_objects and last_obj:
