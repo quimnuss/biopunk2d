@@ -192,6 +192,7 @@ texture = ExtResource("3_1swmn")
 hframes = 2
 
 [node name="Projectile" type="Path2D" parent="." unique_id=1156796049]
+visible = false
 curve = SubResource("Curve2D_qmotx")
 script = ExtResource("3_i26ny")
 

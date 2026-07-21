@@ -6,8 +6,10 @@ extends CharacterBody2D
 @export var last_obj : Node2D
 
 var last_walk_velocity : Vector2 = Vector2.ZERO
+var looking_direction : Vector2 = Vector2.LEFT
 
-const SPEED = 100.0
+const SPEED := 100.0
+const THROWSPEED := 100.0
 
 var grabbable_objects : Array[Grabbable]
 @onready var tool: Sprite2D = $Hand/Tool
@@ -18,24 +20,30 @@ var is_shooting : bool = false
 
 func _input(event: InputEvent) -> void:
     if event.is_action_pressed("interact"):
-        if tool_type != Grabbable.ToolType.NONE:
+        if has_tool():
             drop_tool()
         elif last_obj:
             prints('grabbed', Grabbable.tooltype_str[last_obj.tooltype])
             equip_tool(last_obj.tooltype)
             last_obj.get_parent().queue_free()
 
+
+func has_tool() -> bool:
+    return tool_type != Grabbable.ToolType.NONE
+
 func equip_tool(new_tool_type : Grabbable.ToolType):
     tool_type = new_tool_type
     tool.frame = tool_type
 
-func drop_tool():
+func drop_tool() -> Node2D:
     if tool_type != Grabbable.ToolType.NONE:
         var new_tool = Grabbable.instantiate(tool_type)
         get_tree().get_current_scene().add_child(new_tool)
         new_tool.global_position = hand.global_position
         prints('dropped', new_tool)
         equip_tool(Grabbable.ToolType.NONE)
+        return new_tool
+    return null
 
 func _physics_process(delta: float) -> void:
    
@@ -44,16 +52,16 @@ func _physics_process(delta: float) -> void:
         sprite_2d.flip_h = true
     elif direction.x > 0:
         sprite_2d.flip_h = false
-
-    if Input.is_action_just_pressed("shoot") and last_obj:
-        if tool:
-            shoot()
-
+    
     if direction:
         velocity = direction * SPEED
+        looking_direction = direction
     else:
         velocity = Vector2.ZERO
 
+    if Input.is_action_just_pressed("shoot"):
+        if has_tool():
+            shoot()
 
     if velocity.length() > 0:
         if abs(velocity.x) > 0:
@@ -79,12 +87,13 @@ func closest_object(a : Node2D, b : Node2D):
     return self.global_position.distance_to(a.global_position) < self.global_position.distance_to(b.global_position)
 
 func shoot():
-    if is_shooting:
-        return
-    is_shooting = true
-    
-    var start_position := self.global_position
-    var direction = -1 if sprite_2d.flip_h else 1
+    var spawned_drop : Node2D = drop_tool()
+    #quick and dirty throw
+    var tween := get_tree().create_tween()
+    const THROWDISTANCE := THROWSPEED * 1.0
+    var start_position := spawned_drop.global_position
+    tween.tween_property(spawned_drop, "global_position", start_position + looking_direction * THROWDISTANCE, 1).set_ease(Tween.EASE_OUT)
+    #tween.parallel().tween_property(spawned_drop, "position:y", 0, 1).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)    
 
 func grabbable_changed():
     if not grabbable_objects and last_obj:
