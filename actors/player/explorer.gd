@@ -10,18 +10,32 @@ var last_walk_velocity : Vector2 = Vector2.ZERO
 const SPEED = 100.0
 
 var grabbable_objects : Array[Grabbable]
+@onready var tool: Sprite2D = $Hand/Tool
 
-var tool : Node2D
+var tool_type : Grabbable.ToolType
 
 var is_shooting : bool = false
 
 func _input(event: InputEvent) -> void:
-    if event.is_action_pressed("interact") and last_obj:
-        if tool:
-            # todo drop
-            tool.queue_free()
-        last_obj.reparent(self.hand)
-        tool = last_obj
+    if event.is_action_pressed("interact"):
+        if tool_type != Grabbable.ToolType.NONE:
+            drop_tool()
+        elif last_obj:
+            prints('grabbed', Grabbable.tooltype_str[last_obj.tooltype])
+            equip_tool(last_obj.tooltype)
+            last_obj.get_parent().queue_free()
+
+func equip_tool(new_tool_type : Grabbable.ToolType):
+    tool_type = new_tool_type
+    tool.frame = tool_type
+
+func drop_tool():
+    if tool_type != Grabbable.ToolType.NONE:
+        var new_tool = Grabbable.instantiate(tool_type)
+        get_tree().get_current_scene().add_child(new_tool)
+        new_tool.global_position = hand.global_position
+        prints('dropped', new_tool)
+        equip_tool(Grabbable.ToolType.NONE)
 
 func _physics_process(delta: float) -> void:
    

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b3t7hocj8h1je" path="res://actors/player/explorer.gd" id="1_hjlto"]
 [ext_resource type="Texture2D" uid="uid://e0cqobxwd1jy" path="res://actors/player/assets/player.png" id="2_xd2sl"]
+[ext_resource type="Texture2D" uid="uid://b54slvu4geprm" path="res://assets/tools.png" id="3_1swmn"]
 [ext_resource type="Script" uid="uid://x2gdyb3lkcy0" path="res://actors/player/projectile.gd" id="3_i26ny"]
 [ext_resource type="Texture2D" uid="uid://bhcn05ejrghsw" path="res://assets/stripe.png" id="4_1swmn"]
 
@@ -185,6 +186,10 @@ shape = SubResource("CircleShape2D_xd2sl")
 
 [node name="Hand" type="Node2D" parent="." unique_id=1584428716]
 position = Vector2(10, -8)
+
+[node name="Tool" type="Sprite2D" parent="Hand" unique_id=92260342]
+texture = ExtResource("3_1swmn")
+hframes = 2
 
 [node name="Projectile" type="Path2D" parent="." unique_id=1156796049]
 curve = SubResource("Curve2D_qmotx")
