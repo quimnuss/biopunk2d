@@ -92,9 +92,12 @@ func shoot():
     var tween := get_tree().create_tween()
     const THROWDISTANCE := THROWSPEED * 1.0
     var start_position := spawned_drop.global_position
-    tween.tween_property(spawned_drop, "global_position", start_position + looking_direction * THROWDISTANCE, 1).set_ease(Tween.EASE_OUT)
-    #tween.parallel().tween_property(spawned_drop, "position:y", 0, 1).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)    
+    var final_position := start_position + looking_direction * THROWDISTANCE
+    tween.tween_property(spawned_drop, "global_position:x", final_position.x, 1).set_trans(Tween.TRANS_CIRC).set_ease(Tween.EASE_IN)
+    #tween.parallel().tween_property(spawned_drop, "global_position:y", final_position.y - 50, 0.5)
+    #tween.chain().tween_property(spawned_drop, "global_position:y", final_position.y, 0.5).set_trans(Tween.TRANS_BOUNCE)
 
+    
 func grabbable_changed():
     if not grabbable_objects and last_obj:
         last_obj.focus_changed.emit(false)
