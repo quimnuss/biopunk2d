@@ -96,6 +96,7 @@ func shoot():
     var final_position := start_position + looking_direction * THROWDISTANCE
     var tween := get_tree().create_tween()
     tween.tween_property(spawned_drop, "global_position", final_position, 0.5).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+    tween.parallel().tween_property(spawned_drop, "rotation", 2*PI + randf()*PI, 0.5).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
     
     
 func grabbable_changed():
