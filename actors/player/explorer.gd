@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var hand : Node2D = $Hand
 @export var last_obj : Node2D
+@export var actors_node : Node2D
 
 var last_walk_velocity : Vector2 = Vector2.ZERO
 var looking_direction : Vector2 = Vector2.LEFT
@@ -38,7 +39,7 @@ func equip_tool(new_tool_type : Grabbable.ToolType):
 func drop_tool() -> Node2D:
     if tool_type != Grabbable.ToolType.NONE:
         var new_tool = Grabbable.instantiate(tool_type)
-        get_tree().get_current_scene().add_child(new_tool)
+        actors_node.add_child(new_tool)
         new_tool.global_position = hand.global_position
         prints('dropped', new_tool)
         equip_tool(Grabbable.ToolType.NONE)
@@ -89,14 +90,13 @@ func closest_object(a : Node2D, b : Node2D):
 func shoot():
     var spawned_drop : Node2D = drop_tool()
     #quick and dirty throw
-    var tween := get_tree().create_tween()
     const THROWDISTANCE := THROWSPEED * 1.0
     var start_position := spawned_drop.global_position
+    var arc_height := 48.0
     var final_position := start_position + looking_direction * THROWDISTANCE
-    tween.tween_property(spawned_drop, "global_position:x", final_position.x, 1).set_trans(Tween.TRANS_CIRC).set_ease(Tween.EASE_IN)
-    #tween.parallel().tween_property(spawned_drop, "global_position:y", final_position.y - 50, 0.5)
-    #tween.chain().tween_property(spawned_drop, "global_position:y", final_position.y, 0.5).set_trans(Tween.TRANS_BOUNCE)
-
+    var tween := get_tree().create_tween()
+    tween.tween_property(spawned_drop, "global_position", final_position, 0.5).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+    
     
 func grabbable_changed():
     if not grabbable_objects and last_obj:
