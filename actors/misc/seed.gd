@@ -2,6 +2,7 @@ class_name Seed
 extends Node2D
 
 @onready var seed: Sprite2D = $Seed
+
 var is_highlighted : bool = false :
     set(new_is_highlighted):
         is_highlighted = new_is_highlighted

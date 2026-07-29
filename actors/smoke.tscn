@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://c6ihnaqew3eeh"]
+
+[ext_resource type="Script" uid="uid://cj31h2ysddxgi" path="res://actors/smoke.gd" id="1_l4icq"]
+[ext_resource type="SpriteFrames" uid="uid://b6rbw150dvxqb" path="res://assets/smoke_sprite_frames.tres" id="2_vd2l1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m6ua7"]
+radius = 56.568542
+
+[node name="Smoke" type="Node2D" unique_id=255116641]
+script = ExtResource("1_l4icq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1806834205]
+sprite_frames = ExtResource("2_vd2l1")
+autoplay = "default"
+frame = 7
+frame_progress = 0.40475705
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1532901751]
+collision_layer = 0
+collision_mask = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1149566189]
+shape = SubResource("CircleShape2D_m6ua7")
+
+[node name="Timer" type="Timer" parent="." unique_id=510395524]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

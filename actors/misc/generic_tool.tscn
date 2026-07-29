@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://0irvjf5vij14"]
+
+[ext_resource type="Script" uid="uid://p3nbkloncc5e" path="res://actors/misc/generic_grabbable.gd" id="1_q8nad"]
+[ext_resource type="Texture2D" uid="uid://b54slvu4geprm" path="res://assets/tools.png" id="2_q8nad"]
+[ext_resource type="Script" uid="uid://kv8v2ycc1au8" path="res://actors/components/grabbable_area_2d.gd" id="3_jgee1"]
+[ext_resource type="Script" uid="uid://dl1bbosrff8dd" path="res://actors/components/highlight_component.gd" id="4_7ejfd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j0038"]
+radius = 7.071068
+
+[node name="GenericGrabbable" type="Node2D" unique_id=1163452232]
+y_sort_enabled = true
+script = ExtResource("1_q8nad")
+
+[node name="GenericGrabbableSprite" type="Sprite2D" parent="." unique_id=840216553]
+texture = ExtResource("2_q8nad")
+hframes = 3
+
+[node name="GrabbableArea2D" type="Area2D" parent="." unique_id=1518460149]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("3_jgee1")
+tooltype = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrabbableArea2D" unique_id=629506732]
+shape = SubResource("CircleShape2D_j0038")
+
+[node name="HighlightComponent" type="Node2D" parent="." unique_id=871165728]
+script = ExtResource("4_7ejfd")
+
+[connection signal="focus_changed" from="GrabbableArea2D" to="." method="_on_grabbable_area_2d_focus_changed"]
+[connection signal="focus_changed" from="GrabbableArea2D" to="HighlightComponent" method="_on_grabbable_area_2d_focus_changed"]

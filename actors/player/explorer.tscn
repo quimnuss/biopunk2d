@@ -189,7 +189,7 @@ position = Vector2(10, -8)
 
 [node name="Tool" type="Sprite2D" parent="Hand" unique_id=92260342]
 texture = ExtResource("3_1swmn")
-hframes = 2
+hframes = 3
 
 [node name="Projectile" type="Path2D" parent="." unique_id=1156796049]
 visible = false

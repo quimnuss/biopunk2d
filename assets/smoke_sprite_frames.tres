@@ -1,0 +1,70 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://b6rbw150dvxqb"]
+
+[ext_resource type="Texture2D" uid="uid://bxahjaikbw0x2" path="res://assets/pollution_spritesheet.png" id="1_igljq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6k577"]
+atlas = ExtResource("1_igljq")
+region = Rect2(0, 0, 99, 95)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fo7yp"]
+atlas = ExtResource("1_igljq")
+region = Rect2(99, 0, 99, 95)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iodh7"]
+atlas = ExtResource("1_igljq")
+region = Rect2(198, 0, 99, 95)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5djuy"]
+atlas = ExtResource("1_igljq")
+region = Rect2(297, 0, 99, 95)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xhw8v"]
+atlas = ExtResource("1_igljq")
+region = Rect2(396, 0, 99, 95)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rphwu"]
+atlas = ExtResource("1_igljq")
+region = Rect2(495, 0, 99, 95)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_psqhr"]
+atlas = ExtResource("1_igljq")
+region = Rect2(594, 0, 99, 95)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ig6jk"]
+atlas = ExtResource("1_igljq")
+region = Rect2(693, 0, 99, 95)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6k577")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fo7yp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iodh7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5djuy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xhw8v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rphwu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_psqhr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ig6jk")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
