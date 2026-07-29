@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://cbp1gfb8gxxsn" path="res://actors/misc/spawn_seed.tscn" id="3_pmfem"]
 [ext_resource type="PackedScene" uid="uid://b4cmjxffpuhyv" path="res://actors/misc/eyeplant.tscn" id="4_w32yo"]
 [ext_resource type="Texture2D" uid="uid://k7k8sy7xknbm" path="res://assets/seedplant.png" id="5_i8ckm"]
-[ext_resource type="PackedScene" uid="uid://c6ihnaqew3eeh" path="res://actors/smoke.tscn" id="5_vons5"]
 [ext_resource type="PackedScene" uid="uid://cjm8tl8w184yj" path="res://actors/misc/seed.tscn" id="6_legw5"]
 
 [node name="World" type="Node2D" unique_id=2121694070]
@@ -58,8 +57,6 @@ drag_vertical_enabled = true
 
 [node name="Eyeplant" parent="Actors" unique_id=1104561968 instance=ExtResource("4_w32yo")]
 position = Vector2(368, 240)
-
-[node name="Smoke" parent="Actors" unique_id=255116641 instance=ExtResource("5_vons5")]
 
 [node name="Seedplant" type="Node2D" parent="." unique_id=1941576609]
 

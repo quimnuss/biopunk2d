@@ -20,7 +20,7 @@ var dizzy_eye_angle : float = 0.0
             match previous_state:
                 'DIZZY':
                     dizzy_component.visible = false
-                    grabbable_area_2d.deactivate()
+                    grabbable_area_2d.call_deferred("deactivate")
                     $Plant.modulate.a = 1.0
                 'HIDDEN':
                     unhide_hole()
@@ -30,7 +30,7 @@ var dizzy_eye_angle : float = 0.0
                 'DIZZY':
                     dizzy_component.visible = true
                     dizzy_timer.start(DIZZY_DURATION)
-                    grabbable_area_2d.activate()
+                    grabbable_area_2d.call_deferred("activate")
                 'HIDDEN':
                     hide_hole()
 
@@ -83,10 +83,10 @@ func _on_close_sensor_body_exited(body: Node2D) -> void:
        state = 'IDLE'
 
 
-func _on_close_sensor_area_entered(area: Area2D) -> void:
-    if area.get_parent() is Smoke and state != 'HIDDEN':
-        state = 'DIZZY'
-
-
 func _on_grabbable_area_2d_focus_changed(is_focused: bool) -> void:
     $Plant.modulate.a = 0.5 if is_focused else 1.0
+
+
+func _on_hurt_box_area_entered(area: Area2D) -> void:
+    if area.get_parent() is Smoke and state != 'HIDDEN':
+        state = 'DIZZY'

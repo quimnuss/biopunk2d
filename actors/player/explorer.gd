@@ -89,6 +89,8 @@ func closest_object(a : Node2D, b : Node2D):
 
 func shoot():
     var spawned_drop : Node2D = drop_tool()
+    if spawned_drop.has_method('set_thrown'):
+        spawned_drop.set_thrown(true)
     #quick and dirty throw
     const THROWDISTANCE := THROWSPEED * 1.0
     var start_position := spawned_drop.global_position

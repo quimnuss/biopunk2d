@@ -9,7 +9,6 @@
 radius = 7.071068
 
 [node name="Seed" type="Node2D" unique_id=1163452232]
-y_sort_enabled = true
 script = ExtResource("1_j0038")
 
 [node name="Seed" type="Sprite2D" parent="." unique_id=840216553]
@@ -26,6 +25,10 @@ shape = SubResource("CircleShape2D_j0038")
 
 [node name="HighlightComponent" type="Node2D" parent="." unique_id=871165728]
 script = ExtResource("4_lhr2j")
+
+[node name="ExplodeTimer" type="Timer" parent="." unique_id=1278002594]
+wait_time = 3.0
+one_shot = true
 
 [connection signal="focus_changed" from="GrabbableArea2D" to="." method="_on_grabbable_area_2d_focus_changed"]
 [connection signal="focus_changed" from="GrabbableArea2D" to="HighlightComponent" method="_on_grabbable_area_2d_focus_changed"]
