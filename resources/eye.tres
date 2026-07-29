@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="BiopunkItem" format=3 uid="uid://baxsgma32q3ax"]
+
+[ext_resource type="Script" uid="uid://bcetaodkq0e21" path="res://misc/item_data.gd" id="1_j8idg"]
+[ext_resource type="Texture2D" uid="uid://dk0x5r7fvr8na" path="res://assets/pumpkseed.png" id="2_82i44"]
+
+[resource]
+script = ExtResource("1_j8idg")
+item_id = "seed"
+name = "Seed"
+texture = ExtResource("2_82i44")
+ui_texture = ExtResource("2_82i44")
+metadata/_custom_type_script = "uid://bcetaodkq0e21"

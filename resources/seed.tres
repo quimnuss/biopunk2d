@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="BiopunkItem" format=3 uid="uid://ds7m2ywgvj6k"]
+
+[ext_resource type="Script" uid="uid://bcetaodkq0e21" path="res://misc/item_data.gd" id="1_75cpv"]
+[ext_resource type="Texture2D" uid="uid://bkp0n5rfni2ha" path="res://assets/eye.png" id="2_rs5eu"]
+
+[resource]
+script = ExtResource("1_75cpv")
+item_id = "eye"
+name = "Eye"
+texture = ExtResource("2_rs5eu")
+ui_texture = ExtResource("2_rs5eu")
+metadata/_custom_type_script = "uid://bcetaodkq0e21"
