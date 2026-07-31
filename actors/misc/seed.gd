@@ -3,6 +3,7 @@ extends Node2D
 
 @onready var seed: Sprite2D = $Seed
 @onready var explode_timer: Timer = $ExplodeTimer
+@onready var grabbable_area_2d: Grabbable = $GrabbableArea2D
 
 var is_thrown : bool = false
 @export var GRENADE_TIME : float = 3.0
@@ -24,5 +25,7 @@ func _on_grabbable_area_2d_focus_changed(is_focused: bool) -> void:
 
 func _on_bomb_timer_timeout():
     var smoke_bomb : Smoke = preload("res://actors/smoke.tscn").instantiate()
+    grabbable_area_2d.deactivate()
+    seed.modulate.a = 0.1
     smoke_bomb.smoke_ended.connect(queue_free)
     add_child(smoke_bomb)

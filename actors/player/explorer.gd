@@ -6,6 +6,8 @@ extends CharacterBody2D
 @export var last_obj : Node2D
 @export var actors_node : Node2D
 
+@export var inventory : Inventory
+
 var last_walk_velocity : Vector2 = Vector2.ZERO
 var looking_direction : Vector2 = Vector2.LEFT
 

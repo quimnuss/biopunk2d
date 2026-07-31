@@ -5,7 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://cbp1gfb8gxxsn" path="res://actors/misc/spawn_seed.tscn" id="3_pmfem"]
 [ext_resource type="PackedScene" uid="uid://b4cmjxffpuhyv" path="res://actors/misc/eyeplant.tscn" id="4_w32yo"]
 [ext_resource type="Texture2D" uid="uid://k7k8sy7xknbm" path="res://assets/seedplant.png" id="5_i8ckm"]
+[ext_resource type="Script" uid="uid://bcetaodkq0e21" path="res://misc/item_data.gd" id="5_vons5"]
 [ext_resource type="PackedScene" uid="uid://cjm8tl8w184yj" path="res://actors/misc/seed.tscn" id="6_legw5"]
+[ext_resource type="PackedScene" uid="uid://v43msceuj28o" path="res://actors/cow.tscn" id="8_legw5"]
 
 [node name="World" type="Node2D" unique_id=2121694070]
 
@@ -48,6 +50,7 @@ position = Vector2(493, 270)
 [node name="Explorer" parent="Actors" unique_id=1401498306 node_paths=PackedStringArray("actors_node") instance=ExtResource("1_2mgkc")]
 position = Vector2(366, 242)
 actors_node = NodePath("..")
+inventory = Array[ExtResource("5_vons5")]([null, null, null, null, null, null, null, null, null, null, null, null])
 
 [node name="Camera2D" type="Camera2D" parent="Actors/Explorer" unique_id=791784627]
 zoom = Vector2(2, 2)
@@ -74,3 +77,6 @@ rotation = 0.26676735
 [node name="Seed3" parent="Seedplant/Seedplant" unique_id=846729475 instance=ExtResource("6_legw5")]
 position = Vector2(18, 0)
 rotation = 0.97076565
+
+[node name="Cow" parent="." unique_id=1635320964 instance=ExtResource("8_legw5")]
+position = Vector2(297, 407)

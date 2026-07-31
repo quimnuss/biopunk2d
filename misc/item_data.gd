@@ -1,4 +1,4 @@
-class_name BiopunkItem
+class_name ItemData
 extends Resource
 
 enum ItemType {FRUIT}
