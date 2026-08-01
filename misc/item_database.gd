@@ -1,3 +1,3 @@
 extends Node
 
-var items_db : Dictionary[String,BiopunkItem]
+var items_db : Dictionary[String,ItemData]
