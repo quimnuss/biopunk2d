@@ -1,6 +1,7 @@
 class_name Player 
 extends CharacterBody2D
 @onready var sprite_2d: Sprite2D = $Anchor/Sprite2D
+@onready var anchor: Node2D = $Anchor
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var hand : Node2D = $Hand
 @export var last_obj : Node2D
@@ -20,6 +21,9 @@ var grabbable_objects : Array[Grabbable]
 var tool_type : Grabbable.ToolType
 
 var is_shooting : bool = false
+var is_dead : bool = false
+
+var health : float = 100.0
 
 func _input(event: InputEvent) -> void:
     if event.is_action_pressed("interact"):
@@ -49,7 +53,8 @@ func drop_tool() -> Node2D:
     return null
 
 func _physics_process(delta: float) -> void:
-   
+    if is_dead:
+        return
     var direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
     if direction.x < 0:
         sprite_2d.flip_h = true
@@ -86,6 +91,10 @@ func _physics_process(delta: float) -> void:
 
     move_and_slide()
 
+func death():
+    is_dead = true
+    animation_player.play("death")
+
 func closest_object(a : Node2D, b : Node2D):
     return self.global_position.distance_to(a.global_position) < self.global_position.distance_to(b.global_position)
 
@@ -115,6 +124,14 @@ func grabbable_changed():
             last_obj.focus_changed.emit(false)
         last_obj = new_last_obj
         last_obj.focus_changed.emit(true)
+
+func damage():
+    health -= 10
+    if health <= 0:
+        death()
+    var tween := get_tree().create_tween()
+    tween.tween_property(anchor,"modulate:a",0,0.2).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
+    tween.tween_property(anchor,"modulate:a",1,0.2).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN)
 
 func _on_grab_area_2d_area_entered(area: Area2D) -> void:
     if area is Grabbable:
