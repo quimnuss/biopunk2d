@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://bcetaodkq0e21" path="res://misc/item_data.gd" id="5_vons5"]
 [ext_resource type="PackedScene" uid="uid://cjm8tl8w184yj" path="res://actors/misc/seed.tscn" id="6_legw5"]
 [ext_resource type="PackedScene" uid="uid://v43msceuj28o" path="res://actors/cow.tscn" id="8_legw5"]
+[ext_resource type="PackedScene" uid="uid://dsf2jqdwpf3ol" path="res://actors/bear.tscn" id="9_687qm"]
 
 [node name="World" type="Node2D" unique_id=2121694070]
 
@@ -80,3 +81,6 @@ rotation = 0.97076565
 
 [node name="Cow" parent="." unique_id=1635320964 instance=ExtResource("8_legw5")]
 position = Vector2(297, 407)
+
+[node name="Bear" parent="." unique_id=404323404 instance=ExtResource("9_687qm")]
+position = Vector2(291, 451)
