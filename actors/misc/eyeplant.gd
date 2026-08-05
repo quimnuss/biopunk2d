@@ -1,4 +1,5 @@
 extends Node2D
+class_name EyePlant
 
 @export var target : Player
 @onready var eye_center: Node2D = $EyeCenter

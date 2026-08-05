@@ -22,6 +22,7 @@ tile_map_data = PackedByteArray("AABFABkAAAARAAcAAABFABgAAAARAAYAAABFABcAAAARAAU
 tile_set = ExtResource("1_tsgde")
 
 [node name="SpawnSeed" parent="." unique_id=864821937 instance=ExtResource("3_pmfem")]
+visible = false
 position = Vector2(389, 461)
 
 [node name="Actors" type="Node2D" parent="." unique_id=1862705552]
@@ -81,6 +82,9 @@ rotation = 0.97076565
 
 [node name="Cow" parent="." unique_id=1635320964 instance=ExtResource("8_legw5")]
 position = Vector2(297, 407)
+
+[node name="Bear2" parent="." unique_id=925440747 instance=ExtResource("9_687qm")]
+position = Vector2(439, 265)
 
 [node name="Bear" parent="." unique_id=404323404 instance=ExtResource("9_687qm")]
 position = Vector2(291, 451)

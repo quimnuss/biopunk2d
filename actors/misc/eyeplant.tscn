@@ -138,7 +138,7 @@ shape = SubResource("CircleShape2D_k2uro")
 disabled = true
 
 [node name="HurtBox" type="Area2D" parent="." unique_id=1230983301]
-collision_layer = 0
+collision_layer = 8
 collision_mask = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=1548269090]
