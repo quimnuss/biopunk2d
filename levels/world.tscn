@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://cjm8tl8w184yj" path="res://actors/misc/seed.tscn" id="6_legw5"]
 [ext_resource type="PackedScene" uid="uid://v43msceuj28o" path="res://actors/cow.tscn" id="8_legw5"]
 [ext_resource type="PackedScene" uid="uid://dsf2jqdwpf3ol" path="res://actors/bear.tscn" id="9_687qm"]
+[ext_resource type="Texture2D" uid="uid://dmd4t35fvf3g4" path="res://assets/nine_patch.png" id="10_re8x6"]
+[ext_resource type="Script" uid="uid://dnvnwtrgy4f1b" path="res://UI/ui_inventory.gd" id="10_wqmfy"]
 
 [node name="World" type="Node2D" unique_id=2121694070]
 
@@ -88,3 +90,66 @@ position = Vector2(439, 265)
 
 [node name="Bear" parent="." unique_id=404323404 instance=ExtResource("9_687qm")]
 position = Vector2(291, 451)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1891234869]
+
+[node name="GUI" type="Control" parent="CanvasLayer" unique_id=200667181]
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Inventory" type="Control" parent="CanvasLayer/GUI" unique_id=802956705]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("10_wqmfy")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/GUI/Inventory" unique_id=1559032585]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -92.0
+offset_top = -140.0
+offset_right = 92.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/GUI/Inventory/MarginContainer" unique_id=1826399341]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("10_re8x6")
+patch_margin_left = 40
+patch_margin_top = 40
+patch_margin_right = 40
+patch_margin_bottom = 40
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/GUI/Inventory/MarginContainer" unique_id=1866906516]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/GUI/Inventory/MarginContainer/MarginContainer" unique_id=231768693]
+layout_mode = 2
+theme_override_constants/h_separation = 4
+columns = 50
